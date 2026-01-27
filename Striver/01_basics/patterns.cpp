@@ -37,6 +37,7 @@ void pattern_three(int n)
         cout << endl;
     }
 }
+
 void pattern_four(int n)
 {
     for (int i = 1; i <= n; i++)
@@ -48,6 +49,7 @@ void pattern_four(int n)
         cout << endl;
     }
 }
+
 void pattern_five(int n)
 {
     for (int i = 1; i <= n; i++)
@@ -76,16 +78,16 @@ void pattern_seven(int n)
 {
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n - i + 1; j++)
+        for (int j = 0; j < (n - i) + 1; j++)
         {
             cout << " ";
         }
 
-        for (int k = 0; k < i * 2 + 1; k++)
+        for (int k = 0; k < (i * 2) + 1; k++)
         {
             cout << "*";
         }
-        for (int j = 0; j < n - i + 1; j++)
+        for (int j = 0; j < (n - i) + 1; j++)
         {
             cout << " ";
         }
@@ -120,6 +122,67 @@ void pattern_nine(int n)
     pattern_eight(n);
 }
 
+void pattern_ten(int n)
+{
+    for (int i = 0; i < (2 * n) - 1; i++)
+    {
+        int stars = i;
+        if (i > n)
+            stars = (2 * n) - i;
+        for (int j = 0; j < stars; j++)
+        {
+            cout << "* ";
+        }
+        cout << endl;
+    }
+}
+
+void pattern_eleven(int n)
+{
+    int start;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (i % 2 == 0)
+            start = 1;
+        else
+            start = 0;
+
+        for (int j = 0; j <= i; j++)
+        {
+            cout << start;
+            start = 1 - start;
+        }
+        cout << endl;
+    }
+}
+
+void pattern_twelve(int n)
+{
+    int space = 2 * (n - 1);
+
+    for (int i = 0; i < n; i++)
+    {
+        // numbers
+        for (int j = 0; j <= i; j++)
+        {
+            cout << j;
+        }
+        // space
+        for (int k = 0; k <= space; k++)
+        {
+            cout << " ";
+        }
+        // reverse numbers
+        for (int j = i; j >= 0; j--)
+        {
+            cout << j;
+        }
+        cout << endl;
+        space -= 2;
+    }
+}
+
 int main()
 {
     int N;
@@ -127,8 +190,6 @@ int main()
     cout << "Enter the number:";
     cin >> N;
 
-    pattern_seven(N);
-    pattern_eight(N);
-
+    pattern_twelve(N);
     return 0;
 }
