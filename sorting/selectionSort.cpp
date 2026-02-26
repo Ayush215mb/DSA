@@ -3,21 +3,8 @@
 using namespace std;
 
 // time complexity -> o(N^2)
-
-int main()
+void selection_sort(int arr[], int n)
 {
-    int n;
-
-    cin >> n;
-
-    int arr[n];
-
-    // taking input
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
-    // selection sort
     for (int i = 0; i < n - 1; i++)
     {
         int mmi = i;
@@ -33,6 +20,23 @@ int main()
         }
         swap(arr[i], arr[mmi]);
     }
+}
+
+int main()
+{
+    int n;
+
+    cin >> n;
+
+    int arr[n];
+
+    // taking input
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    selection_sort(arr, n);
 
     for (int i = 0; i < n; i++)
     {
