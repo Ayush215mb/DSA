@@ -1,0 +1,1 @@
+SOLID is an acronym for five design principles in Object-Oriented Programming (OOP) aimed at creating readable, maintainable, scalable, and testable code.  These principles were initially promoted by Robert C. Martin ("Uncle Bob") and serve as a standard for structuring classes and ensuring modular, adaptable software architecture. 
