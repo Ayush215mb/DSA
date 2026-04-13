@@ -2,45 +2,54 @@
 
 using namespace std;
 
+/*
+ Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not efficient for large data sets as its average and worst-case time complexity are quite high.
+
+ - Sorts the array using multiple passes. After the first pass, the maximum goes to end (its correct position). Same way, after second pass, the second largest goes to second last position and so on.
+
+ - In every pass, process only those that have already not moved to correct position. After k passes, the largest k must have been moved to the last k positions.
+
+ - In a pass, we consider remaining elements and compare all adjacent and swap if larger element is before a smaller element. If we keep doing this, we get the largest (among the remaining elements) at its correct position.
+
+*/
+
 // time complexity -> o(N^2) -> worst and avg case
 // o(N) -> best case
-void bubble_sort(int arr[], int n)
+void bubbleSort(vector<int> &arr)
 {
-    for (int i = n - 1; i >= 0; i--)
+    int n = arr.size();
+    bool swapped;
+
+    for (int i = 0; i < n - 1; i++)
     {
-        int didSwap = 0;
-        for (int j = 0; j <= i - 1; j++)
+        swapped = false;
+        for (int j = 0; j < n - i - 1; j++)
         {
             if (arr[j] > arr[j + 1])
             {
                 swap(arr[j], arr[j + 1]);
-                didSwap = 1;
+                swapped = true;
             }
         }
-        if (didSwap == 0)
-        {
+
+        // If no two elements were swapped, then break
+        if (!swapped)
             break;
-        }
     }
+}
+
+void printVector(const vector<int> &arr)
+{
+    for (int num : arr)
+        cout << " " << num;
 }
 
 int main()
 {
-    int n;
+    vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
 
-    cin >> n;
-
-    int arr[n];
-
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
-
-    bubble_sort(arr, n);
-
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
+    bubbleSort(arr);
+    cout << "Sorted array: \n";
+    printVector(arr);
+    return 0;
 }

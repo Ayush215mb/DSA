@@ -2,44 +2,69 @@
 
 using namespace std;
 
-// time complexity -> o(N^2)
-void selection_sort(int arr[], int n)
-{
-    for (int i = 0; i < n - 1; i++)
-    {
-        int mmi = i;
+/*
+Selection Sort is a comparison-based sorting algorithm. It sorts by repeatedly selecting the smallest (or largest) element from the unsorted portion and swapping it with the first unsorted element.
 
-        // loop to get the index of the minimum value
-        for (int j = i; j < n; j++)
+ - Find the smallest element and swap it with the first element. This way we get the smallest element at its correct position.
+
+ - Then find the smallest among remaining elements (or second smallest) and swap it with the second element.
+
+ - We keep doing this until we get all elements moved to correct position.
+
+*/
+
+// time complexity -> o(N^2)
+
+void selectionSort(vector<int> &arr)
+{
+    int n = arr.size();
+
+    for (int i = 0; i < n - 1; ++i)
+    {
+
+        // Assume the current position holds
+        // the minimum element
+        int min_idx = i;
+
+        // Iterate through the unsorted portion
+        // to find the actual minimum
+        for (int j = i + 1; j < n; ++j)
         {
-            if (arr[j] < arr[mmi])
+            if (arr[j] < arr[min_idx])
             {
-                // we got the index of the minimum value
-                mmi = j;
+
+                // Update min_idx if a smaller
+                // element is found
+                min_idx = j;
             }
         }
-        swap(arr[i], arr[mmi]);
+
+        // Move minimum element to its
+        // correct position
+        swap(arr[i], arr[min_idx]);
     }
+}
+
+void printArray(vector<int> &arr)
+{
+    for (int &val : arr)
+    {
+        cout << val << " ";
+    }
+    cout << endl;
 }
 
 int main()
 {
-    int n;
+    vector<int> arr = {64, 25, 12, 22, 11};
 
-    cin >> n;
+    cout << "Original array: ";
+    printArray(arr);
 
-    int arr[n];
+    selectionSort(arr);
 
-    // taking input
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
+    cout << "Sorted array: ";
+    printArray(arr);
 
-    selection_sort(arr, n);
-
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
+    return 0;
 }
