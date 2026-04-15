@@ -24,5 +24,19 @@ int main()
     // 25 21 10
     cout << pq.top() << endl; // 25
 
-        return 0;
+    // min-heap -> minimam value -> highest priority
+    priority_queue<int, vector<int>, greater<int>> lpq;
+
+    lpq.push(50); // 50
+
+    lpq.push(100); // 50 100
+
+    lpq.push(20); // 20 50 100
+
+    cout << "min-heap: " << lpq.top() << endl;
+
+    lpq.pop();
+    cout << "min-heap after pop: " << lpq.top() << endl;
+
+    return 0;
 }
